@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<mujoco model="ORCA hand sim scene">
+  
+  <include file="scene.xml"/> 
+
+  <include file="assets/mjcf/sim_options.xml"/>
+
+  <include file="models/mjcf/orcahand_right_mountable.mjcf"/>
+  <include file="models/mjcf/fr3.xml"/>
+
+  <equality>
+    <weld site1="orca_attach" site2="attachment_site"/>
+  </equality>
+</mujoco>
