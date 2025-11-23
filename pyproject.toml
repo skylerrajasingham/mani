@@ -1,0 +1,17 @@
+[project]
+name = "mani"
+version = "0.1.0"
+description = "mani - autonomous operating room assistant"
+authors = [
+  { name = "Skyler Rajasingham" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+  "mujoco>=3.3.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
