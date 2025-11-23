@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<mujoco model="ORCA hand sim scene">
+  
+  <include file="scene.xml"/> 
+
+  <include file="assets/mjcf/sim_options.xml"/>
+
+  <include file="models/mjcf/orcahand_right_free.mjcf"/>
+  
+  <worldbody>
+    <body name="object" pos="0 0.2 0">
+      <freejoint/>
+      <!-- <geom type="box" size="0.025 0.025 0.025" rgba="0.5 0 0 1" condim="6" priority="1" friction="0.5 0.01 0.003"/> -->
+      <geom type="cylinder" size="0.02 0.03" pos="0 0.0025 0" euler="1.56 0 0" rgba="0.5 0 0 1" condim="6" priority="1" friction="0.5 0.01 0.003"/>
+    </body>
+  </worldbody>
+   
+</mujoco>
