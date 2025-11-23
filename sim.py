@@ -14,11 +14,13 @@ args = parser.parse_args(sys.argv[1:])
 
 if args.frank_fr3:
     MODEL_XML = "simulation/scene_fr3_orca.xml"
-    additional_actuators = []
+    u_addn = 0
 else:
     MODEL_XML = "simulation/scene_orca.xml"
-    # extra actuators that don't actually exist to control floating hand (x, y, z) in sim
-    additional_actuators = [0] * 3
+    # number of extra actuators that don't actually exist to control floating hand (x, y, z) in sim
+    u_addn = 3
+
+additional_actuators = [0] * u_addn
 
 # Load model and create data
 model = mujoco.MjModel.from_xml_path(MODEL_XML)
@@ -27,8 +29,8 @@ data = mujoco.MjData(model)
 # Initialize mani
 mani = Controller(
     state=State(
-        pos_rad=data.qpos,
-        _torque_nm=data.qfrc_actuator,
+        pos_rad=data.qpos[u_addn:],
+        _torque_nm=data.qfrc_actuator[u_addn:],
     )
 )
 
@@ -42,8 +44,8 @@ with mujoco.viewer.launch_passive(model, data) as viewer:
     while viewer.is_running():
         
         # Control with mani
-        data.ctrl = additional_actuators + mani.u[:model.nu - len(additional_actuators)]
-        
+        data.ctrl = additional_actuators + mani.u[:model.nu - u_addn]
+
         # Step simulation
         mujoco.mj_step(model, data)
 
