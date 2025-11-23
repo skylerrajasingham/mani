@@ -73,7 +73,7 @@
     <!-- Body: right_tower -->
     <!-- <body name="right_tower"> -->
     <!-- <body euler="-1.571 0.0 1.571" name="right_tower" pos="0.2 0.16 0.2"> -->
-    <body euler="-1.571 0.0 1.571" name="right_tower" pos="0.16 0.18 0.2">
+    <body euler="-1.571 0.0 1.571" name="right_tower" pos="0.16 0.183 0.206">
       <joint name="tower_x" type="slide" axis="1 0 0" limited="false"/>
       <joint name="tower_z" type="slide" axis="0 -1 0" limited="false"/>
       <joint name="tower_y" type="slide" axis="0 0 1" limited="false"/>
@@ -275,7 +275,6 @@
     </body>
   </worldbody>
   <actuator>
-    
     <!-- Global Pos -->
     <position name="tower_pos_x" joint="tower_x" ctrlrange="-2 2" kp="450" kv="45"/>
     <position name="tower_pos_y" joint="tower_y" ctrlrange="-2 2" kp="450" kv="45"/>
@@ -291,6 +290,7 @@
     <position class="orca_actuate" ctrlrange="-1.04577 0.24577" joint="right_index_abd" name="right_index_abd_actuator"/>
     <position class="orca_actuate" ctrlrange="-0.34907 1.65806" joint="right_index_mcp" name="right_index_mcp_actuator"/>
     <position class="orca_actuate" ctrlrange="-0.34907 1.88496" joint="right_index_pip" name="right_index_pip_actuator"/>
+    
     <!-- Middle -->
     <position class="orca_actuate" ctrlrange="-0.64577 0.64577" joint="right_middle_abd" name="right_middle_abd_actuator"/>
     <position class="orca_actuate" ctrlrange="-0.34907 1.58825" joint="right_middle_mcp" name="right_middle_mcp_actuator"/>
@@ -303,6 +303,10 @@
     <position class="orca_actuate" ctrlrange="-0.12244 1.1691" joint="right_pinky_abd" name="right_pinky_abd_actuator"/>
     <position class="orca_actuate" ctrlrange="-0.34907 1.71042" joint="right_pinky_mcp" name="right_pinky_mcp_actuator"/>
     <position class="orca_actuate" ctrlrange="-0.34907 1.88496" joint="right_pinky_pip" name="right_pinky_pip_actuator"/>
+    <!-- Torque -->
+    <motor joint="right_index_mcp" name="TORQUE_right_index_mcp_actuator" gear="1" ctrlrange="-5 5"/>
+    <motor joint="right_middle_mcp" name="TORQUE_right_middle_mcp_actuator" gear="1" ctrlrange="-5 5"/>
+  
   </actuator>
   <contact>
     <!-- Base -->
